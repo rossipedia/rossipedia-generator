@@ -1,0 +1,153 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans|Sanchez);
+/*
+html5doctor.com Reset Stylesheet v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1.4;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+/* change colours to suit your needs */
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+/* change colours to suit your needs */
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* change border colour to suit your needs */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+//--------------------------------------------------------
+// Typography
+
+html {
+  font-size: 16px;
+}
+
+@serif: "Sanchez";
+@sans: "Open Sans";
+@mono: monospace;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @sans;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: normal;
+}
+
+.wrap {
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  max-width: 28rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidebar-checkbox {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14rem;
+  /* visibility: hidden; */
+  overflow-y: auto;
+  font-family: @sans;
+  font-size: .875rem;
+  background-color: #303030;
+  color: rgba(255,255,255,.6);
+  box-shadow: -1rem 0 1rem -1rem #000 inset;
+}
+
+.sidebar-toggle {
+
+}
+

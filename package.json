@@ -1,0 +1,28 @@
+{
+  "name": "rossipedia.com",
+  "author": "Bryan James Ross <bryan@rossipedia.com>",
+  "description": "Code, music, and other junk",
+  "version": "0.0.1",
+  "dependencies": {
+    "marked": "~0.3.0",
+    "less": "~1.6.0",
+    "glob": "~3.2.7",
+    "uglify-js": "~2.4.8",
+    "grunt": "~0.4.2",
+    "jade": "~1.0.2"
+  },
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jade": "~0.9.1",
+    "grunt-contrib-less": "~0.8.3",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "matchdep": "~0.3.0",
+    "htmlhint": "~0.9.3",
+    "express": "~3.4.7",
+    "colors": "~0.6.2",
+    "grunt-express": "~1.2.1"
+  }
+}
