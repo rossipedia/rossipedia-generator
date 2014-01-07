@@ -99,7 +99,11 @@ input, select {
 // Typography
 
 html {
-  font-size: 16px;
+  font-size: 20px;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 @serif: "Sanchez";
@@ -121,6 +125,8 @@ h1 {
 }
 
 .container {
+  position: relative;
+  left: 0;
   max-width: 28rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -136,18 +142,63 @@ h1 {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -14rem;
   width: 14rem;
-  /* visibility: hidden; */
-  overflow-y: auto;
   font-family: @sans;
-  font-size: .875rem;
-  background-color: #303030;
+  background-color: #fff;
   color: rgba(255,255,255,.6);
-  box-shadow: -1rem 0 1rem -1rem #000 inset;
+  overflow: visible auto;
+  a { color: inherit; }
 }
 
 .sidebar-toggle {
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: -4rem;
+  display: block;
+  width: 1rem;
+  padding: .5rem .65rem;
+  color: #505050;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+.sidebar-toggle:before {
+  font-size: 1rem;
+  display: block;
+  content: "";
+  width: 100%;
+  padding-bottom: .125rem;
+  border-top: .375rem double;
+  border-bottom: .125rem solid;
+
+  padding-bottom: .15rem;
+  border-top-width: .45rem;
+  border-bottom-width: .15rem;
+
+/* Make the border inside the box */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.sidebar-toggle:active,
+#sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
+  color: #fff;
+  background-color: #505050;
+}
+
+
+.sidebar {
+  -webkit-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+}
+
+#sidebar-checkbox:checked ~ .wrap .sidebar {
+  left: 0;
+  box-shadow: -1rem 0 1rem 1rem #888;
+  background-color: rgba(0,0,0,0.8);
 }
 
