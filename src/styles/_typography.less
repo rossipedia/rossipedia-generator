@@ -1,0 +1,87 @@
+html {
+  font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: @serif;
+}
+
+h1 {
+  font-size: 1.9rem;
+}
+
+
+.masthead {
+  header {
+    h1 a {
+      text-decoration: none;
+      font-family: @sans;
+    }
+
+    h2 {
+      font-family: @sans;
+    }
+  }
+}
+
+div.container {
+  &.content {
+    h1 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      line-height: 2;
+    }
+
+    div.code-desc {
+      font-family: @serif;
+      text-shadow: 0 .1rem 0 rgba(255,255,255,.3);
+    }
+
+    p {
+      font-family: @sans;
+      margin: 1rem 0;
+      line-height: 1.4;
+    }
+
+    ul, ol {
+      li {
+        font-family: @sans;
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    code.block {
+      line-height: 1;
+    }
+
+    table {
+      font-size: .8rem;
+      thead {
+        font-family: @serif;
+      }
+
+      tbody {
+        font-family: @sans;
+      }
+    }
+
+
+    blockquote {
+      p {
+        font-family: @serif;
+      }
+
+      &:before, &:after {
+        font-size: 2rem;
+      }
+    }
+  }
+
+}
+
+.wrap > footer {
+  font-family: @serif;
+}

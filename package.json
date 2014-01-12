@@ -9,7 +9,8 @@
     "glob": "~3.2.7",
     "uglify-js": "~2.4.8",
     "grunt": "~0.4.2",
-    "jade": "~1.0.2"
+    "jade": "~1.0.2",
+    "yaml-front-matter": "~2.1.11"
   },
   "private": true,
   "devDependencies": {
@@ -23,6 +24,13 @@
     "htmlhint": "~0.9.3",
     "express": "~3.4.7",
     "colors": "~0.6.2",
-    "grunt-express": "~1.2.1"
+    "grunt-express": "~1.2.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "clean-css": "~2.0.6",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "async": "~0.2.9",
+    "grunt-contrib-clean": "~0.5.0",
+    "moment": "~2.5.0",
+    "underscore": "~1.5.2"
   }
 }

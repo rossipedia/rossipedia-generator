@@ -1,0 +1,17 @@
+extends _main
+
+block content
+	main
+		article
+			header
+				p.meta: time(datetime=post.meta.date.toISOString())= post.meta.date.format('ll')
+				h1= post.meta.title
+
+			!= post.content
+
+block footer
+	ul.nav
+		li: a(href=post.prev disabled=(post.prev===undefined?"disabled":undefined)) &lt;
+		li: a(href="/archives") Archives
+		li: a(href=post.next disabled=(post.next===undefined?"disabled":undefined)) &gt;
+

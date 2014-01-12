@@ -1,12 +1,20 @@
 .sidebar
 	label(for="sidebar-checkbox",class="sidebar-toggle")
 
+	aside
+		:markdown
+			Code MacGuyver @
+			<a href="http://stackexchange.com" target="_blank">StackExchange</a>
+
+			I've been known to play and record music.
+
 	nav
 		ul
 			li: a(href="/") Home
 			li: a(href="/archives") Archives
 
 	.recent-posts
+		include _recent
 
 	.github-repos
 

@@ -1,0 +1,9 @@
+h5 Recent Posts
+
+if sidebar && sidebar.recent
+	ul.recent
+		each item in sidebar.recent
+			li: a(href=item.href)= item.title
+
+
+

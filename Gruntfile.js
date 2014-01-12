@@ -1,22 +1,61 @@
-var path = require('path');
+var path = require('path'),
+    util = require('util'),
+    lib = require('./lib');
 
 module.exports = function(grunt) {
   "use strict";
 
   var config = {
-    less: {
+    clean: {
+			basic: ['build/*', '!build/blog/*'],
+			posts: ['build/blog/*']
+		},
+    posts: {
       dev: {
-        options: { cleancss: true },
+        options: {
+          author: 'Bryan J. Ross' ,
+          baseUrl: 'http://rossipedia.com/blog',
+          comments: true
+        },
         expand: true,
-        cwd: 'src/styles/',
-        src: ['**/*.less'],
-        dest: 'build/styles/',
-        ext: '.css'
+        cwd: 'posts/',
+        src: '**/*.md',
+        template: 'src/layouts/_post.jade',
+        summary: 'build/index.html',
+        dest: 'build/blog/',
+        rename: function(dest, src) {
+          /**
+           * dest: folder
+           * src:  filename
+           */
+           var namedata;
+           try {
+             namedata = new lib.FileNameMeta(src);
+           } catch(e) {
+             return path.join(dest, src);
+           }
+
+           var out = path.join(dest, namedata.postPath(),'index.html');
+           return out;
+        }
+      }
+    },
+    copy: {
+      dev: {
+        expand: true,
+        cwd: 'src/',
+        src: [ '**/*.css', '**/*.js' ],
+        dest: 'build/'
       }
     },
     jade: {
       dev: {
-        options: { pretty: true },
+        options: {
+          pretty: true,
+          data: function (src, dest) {
+            return lib.pageData;
+          }
+        },
         expand: true,
         cwd: 'src/',
         src: ['**/*.jade', '!**/_*.jade'],
@@ -24,10 +63,22 @@ module.exports = function(grunt) {
         ext: '.html',
         rename: function(dstDir, outName, opts) {
           if(outName == 'index.html') return path.join(dstDir, outName);
-            return path.join(dstDir, path.basename(outName, '.html'), 'index.html');
+          return path.join(dstDir, path.basename(outName, '.html'), 'index.html');
         }
       }
     },
+    less: {
+      dev: {
+        options: { cleancss: false },
+        expand: true,
+        cwd: 'src/styles/',
+        src: ['**/*.less', '!**/_*.less'],
+        dest: 'build/styles/',
+        ext: '.css'
+      }
+    },
+
+    // -- for dev --
     express: {
       dev: {
         options: {
@@ -36,10 +87,6 @@ module.exports = function(grunt) {
           bases: [ __dirname + '/build'],
           livereload: true
         }
-      }
-    },
-    cacheBreak: {
-      dev: {
       }
     },
     watch: {
@@ -52,8 +99,16 @@ module.exports = function(grunt) {
         }
       },
       jade: {
-        files:['src/**/*.jade', '!**/_*.jade'],
-        tasks:['jade:dev'],
+        files:['posts/**/*.md', 'src/**/*.jade'],
+        tasks:['posts:dev', 'jade:dev'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      },
+      static: {
+        files:['src/styles/**/*.css','src/scripts/**/*.js'],
+        tasks:['copy:dev'],
         options: {
           spawn: false,
           livereload: true
@@ -66,15 +121,9 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  var tasks = Object.keys(config).filter(function(a) { return a !== 'watch'; });
-  var devTasks = tasks.map(function(task) { return task + ':dev'; });
-  // watch is dev only
-  devTasks.push('watch');
-  // var prodTasks = tasks.map(function(task) { return task + ':prod'; });
+  grunt.registerMultiTask('posts', 'Process posts into jade files', lib.postsTask);
 
-  grunt.registerTask('dev', devTasks);
-  grunt.registerTask('cacheBreak', 'Cache breaks static files', function() {
-    grunt.log.writeln('[TO BE IMPLEMENTED]');
-  });
-  grunt.registerTask('default', ['dev']);
+  grunt.registerTask('build', ['clean:basic', 'posts', 'copy', 'jade', 'less']);
+  grunt.registerTask('serve', ['build', 'express', 'watch']);
+
 };

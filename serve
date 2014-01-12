@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+// vim: ft=javascript
+
+var express = require('express');
+var app = express();
+app.use(express.static(__dirname + '/build'));
+app.listen(9000);
