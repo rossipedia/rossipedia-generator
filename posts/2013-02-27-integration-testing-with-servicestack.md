@@ -38,7 +38,7 @@ elevated privileges.
 
 First, set up the AppHosts:
 
-``` c#
+```csharp
 // The ASP.NET/IIS app host
 public class WebAppHost : AppHostBase
 {
@@ -95,7 +95,7 @@ roles).
 
 And for the AppHostCommon class:
 
-``` c#
+```csharp
 public static class AppHostCommon
 {
   public static void Init(Container container, string connString)
@@ -129,7 +129,7 @@ that it's centralized out of each app host class.
 So what does that give us? Well, now we can do something like this
 (using NUnit to manage the integration tests):
 
-``` c#
+```csharp
 [SetUpFixture]
 public class GlobalTestSetup
 {
@@ -175,7 +175,7 @@ So now, for each integration test, just make sure your service client
 uses the same base url that the SelfAppHost instance was started
 with:
 
-``` c#
+```csharp
 [TestCase]
 public void ShouldDoSomethingNeat()
 {

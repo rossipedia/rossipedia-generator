@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "ErgoDox Mechanical Keyboard Review"
 date: 2013-06-24 12:07
 comments: true

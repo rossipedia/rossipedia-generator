@@ -11,7 +11,7 @@ tags:
 ---
 I ran across this lovely little interface method today:
 
-``` c#
+```csharp
 public interface IOrderProcessor
 {
   TransactionResponse CreateOrder(

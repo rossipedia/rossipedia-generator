@@ -20,7 +20,7 @@ Let's just dive right in, shall we?
 First thing's first, let's add a RequestFilter to perform the
 validation by extracting the key from a custom HTTP header:
 
-``` c# AppHost.cs
+```csharp AppHost.cs
 public class AppHost : AppHostBase
 {
   public override void Configure(Container container)
@@ -40,7 +40,7 @@ This static class we use to verify the key is valid, by checking
 against a custom `ConfigurationSection` (defined shortly):
 
 
-``` c# Clients.cs
+```csharp Clients.cs
 public static class Clients
 {
   private static Lazy<ClientSection> section = new Lazy<ClientSection>(() =>
@@ -57,7 +57,7 @@ public static class Clients
 And the custom `ConfigurationSection` is as follows:
 
 
-``` c# ClientSection.cs
+```csharp ClientSection.cs
 using System.Configuration;
 
 public class ClientSection : ConfigurationSection
@@ -155,7 +155,7 @@ X-ApiKey: somelongrandomkey
 If you're using the C# client, then it's `LocalHttpWebRequestFilter`
 to the rescue:
 
-``` c# AuthenticatedJsonServiceClient.cs
+```csharp AuthenticatedJsonServiceClient.cs
 public class AuthenticatedJsonServiceClient : JsonServiceClient
 {
   public AuthenticatedJsonServiceClient(string baseUri)
@@ -177,7 +177,7 @@ You can also extend the `ClientElement` class if you need more
 per-client data. For instance, I'm currently selecting a connection
 string based on the ApiKey being sent over from the client:
 
-``` c# Added to the ClientElement class
+```csharp Added to the ClientElement class
 [ConfigurationProperty("connectionStringName", IsRequired = true)]
 public string ConnectionStringName
 {

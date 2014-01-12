@@ -8,7 +8,6 @@ category: programming
 tags:
   - asp.net
   - webforms
-post_format: [ ]
 ---
 Recently, I needed to reuse some user controls across multiple webforms
 applications. What I wanted was a way for our UI guy to author and develop
@@ -35,7 +34,7 @@ System.Web.
 Add your control. For this example I’m just going to use the following super
 basic control (named MyControl.ascx):
 
-``` html
+```html
 <%@ Control Language="C#" ClassName="ControlTest.MyControl"
 CodeFile="MyControl.ascx.cs" Inherits="ControlTest.MyControlCode"
 AutoEventWireup="true" %>
@@ -71,7 +70,7 @@ silly things like **<asp:mycontrol_ascx />**. And that’s just silly.
 
 Here’s the contents of my **MyControl.ascx.cs** file:
 
-``` c#
+```csharp
 namespace ControlTest
 {
     using System;

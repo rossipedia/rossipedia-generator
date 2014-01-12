@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Shameless Non-Self Promotion"
 date: 2013-06-18 22:01
 comments: true

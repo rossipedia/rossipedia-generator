@@ -7,7 +7,6 @@ comments: true
 category: general
 tags:
   - random
-post_format: [ ]
 ---
 I’ve spent most of my life trying to avoid unnecessary conflict. Most of the
 time it works out for me. I hate dealing with stress, and most of the time it
@@ -18,10 +17,8 @@ However...
 
 Recently I’ve been coming to a pretty startling conclusion:
 
-{% blockquote %}
-Nothing worthwhile will ever be attained without struggle, conflict, and to
-some degree – pain. Nothing.
-{% endblockquote %}
+> Nothing worthwhile will ever be attained without struggle, conflict, and to
+> some degree – pain. Nothing.
 
 <!-- more -->
 

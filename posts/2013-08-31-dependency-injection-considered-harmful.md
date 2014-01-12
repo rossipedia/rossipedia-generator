@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Dependency Injection considered harmful? Not so fast."
 date: 2013-08-31 10:29
 comments: true

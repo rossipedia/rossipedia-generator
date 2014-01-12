@@ -6,8 +6,6 @@ layout: post
 category: general
 comments: true
 tags: [ ]
-post_format:
-  - Standard
 ---
 The other day I came across a video snippet of some Star Wars themed video game
 where the characters were dancing.

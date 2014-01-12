@@ -34,7 +34,7 @@ chance to bubble up to that module. Hence, no emails.
 
 So, how do we get around this? It's quite simple, actually:
 
-``` c# Global.asax.cs
+```csharp Global.asax.cs
 using System;
 using System.Reflection;
 using System.Web;

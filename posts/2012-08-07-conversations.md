@@ -6,7 +6,6 @@ layout: post
 comments: true
 category: general
 tags: [ ]
-post_format: [ ]
 ---
 I keep hearing people talking about “conversations” in software development.
 Like somehow “conversations” are super important.

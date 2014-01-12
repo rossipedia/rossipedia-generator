@@ -7,7 +7,6 @@ layout: post
 category: general
 tags:
   - windows
-post_format: [ ]
 ---
 A few days ago I installed the Windows 8 Consumer Preview. A few hours later I
 reinstalled Windows 7 Ultimate.

@@ -2,13 +2,11 @@
 author: Bryan J. Ross
 title: Attention to detail
 excerpt:
-layout: post
 comments: true
 category: general
 tags:
   - apple
   - iphone
-post_format: [ ]
 ---
 I usually don’t bother with the fanboyism, but I’ve been playing around with iOS
 6 beta, and just found something cool.
