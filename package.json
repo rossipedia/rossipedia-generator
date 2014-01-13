@@ -4,16 +4,16 @@
   "description": "Code, music, and other junk",
   "version": "0.0.1",
   "dependencies": {
+  },
+  "private": true,
+  "devDependencies": {
     "marked": "~0.3.0",
     "less": "~1.6.0",
     "glob": "~3.2.7",
     "uglify-js": "~2.4.8",
     "grunt": "~0.4.2",
     "jade": "~1.0.2",
-    "yaml-front-matter": "~2.1.11"
-  },
-  "private": true,
-  "devDependencies": {
+    "yaml-front-matter": "~2.1.11",
     "grunt": "~0.4.2",
     "grunt-contrib-jade": "~0.9.1",
     "grunt-contrib-less": "~0.8.3",
