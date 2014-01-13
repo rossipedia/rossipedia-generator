@@ -20,7 +20,8 @@ Let's just dive right in, shall we?
 First thing's first, let's add a RequestFilter to perform the
 validation by extracting the key from a custom HTTP header:
 
-```csharp AppHost.cs
+```csharp
+// AppHost.cs
 public class AppHost : AppHostBase
 {
   public override void Configure(Container container)
@@ -40,7 +41,8 @@ This static class we use to verify the key is valid, by checking
 against a custom `ConfigurationSection` (defined shortly):
 
 
-```csharp Clients.cs
+```csharp
+// Clients.cs
 public static class Clients
 {
   private static Lazy<ClientSection> section = new Lazy<ClientSection>(() =>
@@ -57,7 +59,8 @@ public static class Clients
 And the custom `ConfigurationSection` is as follows:
 
 
-```csharp ClientSection.cs
+```csharp
+// ClientSection.cs
 using System.Configuration;
 
 public class ClientSection : ConfigurationSection
@@ -121,7 +124,8 @@ section class. A necessary evil of .NET's configuration system.
 What this setup allows is to have the following in your web.config (or
 App.config if self-hosted):
 
-``` xml [Web|App].config
+``` xml
+<!-- [Web|App].config -->
 <?xml version="1.0"?>
 <configuration>
   <configSections>
@@ -146,7 +150,7 @@ Nice and easy client access management. All the client has to do is
 send the appropriate HTTP header. For example:
 
 
-``` http RAW HTTP
+```http
 GET /json/reply/SomeRequest HTTP/1.1
 Host: api.example.com
 X-ApiKey: somelongrandomkey
@@ -155,7 +159,8 @@ X-ApiKey: somelongrandomkey
 If you're using the C# client, then it's `LocalHttpWebRequestFilter`
 to the rescue:
 
-```csharp AuthenticatedJsonServiceClient.cs
+```csharp
+// AuthenticatedJsonServiceClient.cs
 public class AuthenticatedJsonServiceClient : JsonServiceClient
 {
   public AuthenticatedJsonServiceClient(string baseUri)
@@ -177,7 +182,8 @@ You can also extend the `ClientElement` class if you need more
 per-client data. For instance, I'm currently selecting a connection
 string based on the ApiKey being sent over from the client:
 
-```csharp Added to the ClientElement class
+```csharp
+// Added to the ClientElement class
 [ConfigurationProperty("connectionStringName", IsRequired = true)]
 public string ConnectionStringName
 {
@@ -188,7 +194,8 @@ public string ConnectionStringName
 
 And in web.config:
 
-``` xml web.config
+``` xml
+<!-- web.config -->
 ...
 <client name="Client1" connectionStringName="Client1DB" apiKey="somelongrandomkey" />
 ...

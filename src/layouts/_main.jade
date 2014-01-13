@@ -4,21 +4,22 @@ html
 		link(rel="stylesheet",type="text/css",href="/styles/main.css")
 		link(rel="stylesheet",href="/styles/hl/github.css")
 	body
+		//- input(type="checkbox",class="sidebar-checkbox",id="sidebar-checkbox",checked)
 		input(type="checkbox",class="sidebar-checkbox",id="sidebar-checkbox")
-		.wrap
-			.masthead: header.container(role="banner")
+		section.wrap
+			section.masthead: header.container(role="banner")
 				h1: a(href="/") Rossipedia
 				h2 Code, music, and other junk
 
-			.content.container
+			main.container
 				block content
 
-			footer
-				.container
-					block footer
-					:markdown
-						&copy; #{new Date().getFullYear()} content and design by
-						[Bryan J. Ross](href="http://rossipedia.com")
+			footer.container
+				block footer
+				:markdown
+					&copy; #{new Date().getFullYear()} content and design by
+					[Bryan J. Ross](href="http://rossipedia.com")
+
 			include ../includes/_sidebar
 		script(src="/scripts/hl/highlight.pack.js")
 		script(type="text/javascript",src="/scripts/rossipedia.js")

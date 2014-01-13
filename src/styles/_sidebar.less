@@ -15,14 +15,15 @@
   width: 20rem;
 
   aside {
-    padding-left: @sidebar-padding-left;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: @sidebar-padding-left;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    padding: 0.3em 0 0.3em @sidebar-padding-left;
-    margin-top: 2rem;
+    padding: 0.3em @sidebar-padding-left;
+  }
+
+  section {
+    margin-bottom: 2em;
   }
 
   ul {
@@ -30,8 +31,13 @@
 
     li a {
       display: block;
-      padding: 0.3rem 0 0.3rem 1rem;
+      padding: .5rem @sidebar-padding-left .3rem;
+
     }
+  }
+
+  .recent li a {
+      padding: .4rem @sidebar-padding-left .1rem;
   }
 }
 
@@ -67,16 +73,16 @@
 // -------------------------------------------------
 // - Typography
 .sidebar {
-  font-family: @serif;
+  font-family: @sans;
+  font-size: 0.75rem;
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: inherit;
     font-weight: normal;
+    font-family: inherit;
   }
 
   aside {
-    font-family: @sans;
-    font-size: 1rem;
+    font-size: 1.1em;
   }
 
   a {
@@ -85,8 +91,7 @@
   }
 
   .recent {
-    font-size: 0.75rem;
-    font-family: @sans;
+    font-size: .8em;
   }
 }
 
@@ -109,6 +114,7 @@
   ul {
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
+
     li a {
       color: inherit;
       background-color: rgba(255,255,255,0);

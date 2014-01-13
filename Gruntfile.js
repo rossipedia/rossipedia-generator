@@ -1,44 +1,26 @@
 var path = require('path'),
     util = require('util'),
-    lib = require('./lib');
+		_    = require('underscore'),
+    lib  = require('./lib');
+
 
 module.exports = function(grunt) {
   "use strict";
 
+	var getBlog = _.memoize(function() {
+		return new lib.Blog();
+	});
+
   var config = {
     clean: {
 			basic: ['build/*', '!build/blog/*'],
-			posts: ['build/blog/*']
+			blog: ['build/blog/*']
 		},
-    posts: {
+    blog: {
       dev: {
-        options: {
-          author: 'Bryan J. Ross' ,
-          baseUrl: 'http://rossipedia.com/blog',
-          comments: true
-        },
-        expand: true,
-        cwd: 'posts/',
-        src: '**/*.md',
-        template: 'src/layouts/_post.jade',
-        summary: 'build/index.html',
-        dest: 'build/blog/',
-        rename: function(dest, src) {
-          /**
-           * dest: folder
-           * src:  filename
-           */
-           var namedata;
-           try {
-             namedata = new lib.FileNameMeta(src);
-           } catch(e) {
-             return path.join(dest, src);
-           }
-
-           var out = path.join(dest, namedata.postPath(),'index.html');
-           return out;
-        }
-      }
+				jade: { pretty: true },
+				data: {}
+			}
     },
     copy: {
       dev: {
@@ -53,7 +35,9 @@ module.exports = function(grunt) {
         options: {
           pretty: true,
           data: function (src, dest) {
-            return lib.pageData;
+						return {
+							blog: getBlog()
+						};
           }
         },
         expand: true,
@@ -100,7 +84,7 @@ module.exports = function(grunt) {
       },
       jade: {
         files:['posts/**/*.md', 'src/**/*.jade'],
-        tasks:['posts:dev', 'jade:dev'],
+        tasks:['blog:dev', 'jade:dev'],
         options: {
           spawn: false,
           livereload: true
@@ -121,9 +105,12 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  grunt.registerMultiTask('posts', 'Process posts into jade files', lib.postsTask);
+	grunt.registerMultiTask('blog', 'Process posts into html files', function() {
+		var options = _.extend(this.data, { target: this.target });
+		return getBlog().build(options);
+	});
 
-  grunt.registerTask('build', ['clean:basic', 'posts', 'copy', 'jade', 'less']);
+  grunt.registerTask('build', ['clean:basic', 'blog', 'copy', 'jade', 'less']);
   grunt.registerTask('serve', ['build', 'express', 'watch']);
 
 };

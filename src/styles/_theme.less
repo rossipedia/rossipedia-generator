@@ -21,30 +21,49 @@ html, body {
 }
 
 
-.container.content {
+main {
+
+  > article > header {
+    border-bottom: @header-border-bottom;
+    h1 { border-bottom: none; }
+
+    time {
+      color: #ccc;
+      &:before {
+        content: "Posted ";
+      }
+    }
+
+    a[rel=author] {
+      color:  #ccc;
+
+      &:before {
+        content: " by ";
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #ccc;
+      }
+    }
+  }
+
   a {
     text-decoration: none;
     color: @link-color;
-
-    -webkit-transition: all @transition-time @transition-ease;
-       -moz-transition: all @transition-time @transition-ease;
-            transition: all @transition-time @transition-ease;
-
     border-radius: .3rem;
 
     &:hover {
-      background-color: fade(desaturate(lighten(@link-color, 30%), 20%), 20%);;
       text-decoration: underline;
-      text-shadow: 0 1px white;
     }
   }
 
 
   h1,h2,h3,h4,h5,h6 {
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: @header-border-bottom;
   }
 
-  code.span {
+  p code {
     background-color: rgba(0,0,0,.1);
     color: @code-color;
     text-shadow: 0 1px #f2f2f2;

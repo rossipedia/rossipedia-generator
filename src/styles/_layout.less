@@ -14,7 +14,7 @@ html, body {
   }
 }
 
-@container-max-width: 70rem;
+@container-max-width: 50rem;
 
 .container {
   max-width: @container-max-width;
@@ -22,49 +22,60 @@ html, body {
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+}
 
-  &.content {
-
-    h1,h2,h3,h4,h5,h6 {
-      margin-bottom: 1rem;
-      margin-top: 1rem;
+main {
+  > article > header {
+    h1 {
+      margin-bottom: 0;
+      line-height: 1.4;
     }
 
-    div.code-desc {
-      border-bottom: 1px solid #888;
-      margin-bottom: .5rem;
-
-      padding: .2rem;
+    time {
+      margin: 0;
     }
+  }
 
-    pre {
+
+  h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  div.code-desc {
+    border-bottom: 1px solid #888;
+    margin-bottom: .5rem;
+
+    padding: .2rem;
+  }
+
+  pre {
+    padding: .2rem .5rem;
+    overflow: auto;
+  }
+
+  ul, ol {
+    padding-left: 1rem;
+    li {
+      list-style-position: inside;
+    }
+  }
+
+  table {
+    margin: 1rem 0;
+
+    th, td {
       padding: .2rem .5rem;
-      overflow: auto;
+      text-align: left;
     }
+  }
 
-    ul, ol {
-      padding-left: 1rem;
-      li {
-        list-style-position: inside;
-      }
-    }
+  blockquote {
+    padding: .25rem 1rem;
 
-    table {
-      margin: 1rem 0;
-
-      th, td {
-        padding: .2rem .5rem;
-        text-align: left;
-      }
-    }
-
-    blockquote {
-      padding: .25rem 1rem;
-
-      &:before {
-        left: 0;
-        top: 0;
-      }
+    &:before {
+      left: 0;
+      top: 0;
     }
   }
 }
