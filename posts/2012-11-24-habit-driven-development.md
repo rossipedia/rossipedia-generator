@@ -36,6 +36,7 @@ Habit driven development.
 Somebody shoot me.
 
 *EDIT* Let me clarify that I _definitely_ think it's important to get
-your DB structure right. This is definitely important. But the main
-point I'm trying to get across is don't let that structure dictate the
-design of _every element across your codebase_.
+your DB structure right. But the main point I'm trying to get across
+is don't let that structure dictate the design of _every element
+across your codebase_.
+

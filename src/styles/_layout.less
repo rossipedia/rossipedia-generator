@@ -42,6 +42,15 @@ main {
     margin-top: 1rem;
   }
 
+  h2.year {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+  }
+
+  h3.month {
+    margin: .5rem 0;
+  }
+
   div.code-desc {
     border-bottom: 1px solid #888;
     margin-bottom: .5rem;
@@ -58,6 +67,10 @@ main {
     padding-left: 1rem;
     li {
       list-style-position: inside;
+
+      &.post {
+        list-style-position: outside;
+      }
     }
   }
 
@@ -78,6 +91,9 @@ main {
       top: 0;
     }
   }
+}
+
+.archives {
 }
 
 .wrap > footer {

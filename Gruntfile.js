@@ -1,26 +1,21 @@
 var path = require('path'),
     util = require('util'),
-		_    = require('underscore'),
+    _    = require('underscore'),
     lib  = require('./lib');
-
 
 module.exports = function(grunt) {
   "use strict";
 
-	var getBlog = _.memoize(function() {
-		return new lib.Blog();
-	});
-
   var config = {
     clean: {
-			basic: ['build/*', '!build/blog/*'],
-			blog: ['build/blog/*']
-		},
+      basic: ['build/*', '!build/blog/*'],
+      blog: ['build/blog/*']
+    },
     blog: {
       dev: {
-				jade: { pretty: true },
-				data: {}
-			}
+        jade: { pretty: true },
+        data: {}
+      }
     },
     copy: {
       dev: {
@@ -34,10 +29,13 @@ module.exports = function(grunt) {
       dev: {
         options: {
           pretty: true,
-          data: function (src, dest) {
-						return {
-							blog: getBlog()
-						};
+          data: function() {
+            return {
+              // TODO: This is horribly inefficient. Don't need to
+              // load the whole blog for _every_ page
+              blog: new lib.Blog(),
+              _: _
+            };
           }
         },
         expand: true,
@@ -105,12 +103,14 @@ module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerMultiTask('blog', 'Process posts into html files', function() {
-		var options = _.extend(this.data, { target: this.target });
-		return getBlog().build(options);
-	});
+  grunt.registerMultiTask('blog', 'Process posts into html files', function() {
+    var options = _.extend(this.data, { target: this.target }),
+        blog = new lib.Blog();
 
-  grunt.registerTask('build', ['clean:basic', 'blog', 'copy', 'jade', 'less']);
+    return blog.build(options);
+  });
+
+  grunt.registerTask('build', ['clean', 'copy', 'jade', 'less', 'blog']);
   grunt.registerTask('serve', ['build', 'express', 'watch']);
 
 };

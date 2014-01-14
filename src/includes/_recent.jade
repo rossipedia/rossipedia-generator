@@ -5,4 +5,5 @@ nav.recent
 		each item in blog.getLatest(5)
 			li: a(href=item.urlpath)= item.title
 
+		li: a(href=blog.options.archivesUrl) More...
 

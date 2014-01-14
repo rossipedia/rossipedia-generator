@@ -1,5 +1,8 @@
 extends _main
 
+block head
+	link(rel="canonical",href=post.meta.href)
+
 block content
 	article
 		header
@@ -18,6 +21,6 @@ block footer
 		- var prev = post.prev ? post.prev.urlpath : undefined;
 		- var next = post.next ? post.next.urlpath : undefined;
 		li: a(href=prev, disabled=(prev===undefined?"disabled":undefined)) &lt;
-		li: a(href="/blog/archives") Archives
+		li: a(href=blog.options.archivesUrl) Archives
 		li: a(href=next, disabled=(next===undefined?"disabled":undefined)) &gt;
 

@@ -1,0 +1,16 @@
+extends _main
+
+
+block content
+	h1 Blog Archives
+
+	section.archives
+		each byYear in posts
+			h2.year: a(href='javascript:alert("fix me");')= byYear.year
+			each byMonth in byYear.posts
+				h3.month: a(href='javascript:alert("fix me");')= byMonth.month
+				ul.posts
+					each post in byMonth.posts
+						li.post
+							a(href=post.meta.urlpath, title="Posted on #{post.meta.date.format('LL')} at #{post.meta.date.format('LT')}")= post.meta.title
+							time(datetime=post.meta.date.toISOString()) - on the #{post.meta.date.format('Mo')}

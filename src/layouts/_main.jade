@@ -3,6 +3,7 @@ html
 	head
 		link(rel="stylesheet",type="text/css",href="/styles/main.css")
 		link(rel="stylesheet",href="/styles/hl/github.css")
+		block head
 	body
 		//- input(type="checkbox",class="sidebar-checkbox",id="sidebar-checkbox",checked)
 		input(type="checkbox",class="sidebar-checkbox",id="sidebar-checkbox")
@@ -23,5 +24,6 @@ html
 			include ../includes/_sidebar
 		script(src="/scripts/hl/highlight.pack.js")
 		script(type="text/javascript",src="/scripts/rossipedia.js")
+		block scripts
 
 
