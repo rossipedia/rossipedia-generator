@@ -1,5 +1,5 @@
 html {
-  font-size: 18px;
+  font-size: @base-font-size;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +24,7 @@ h1 {
   }
 }
 
-main {
+section.main {
   > article > header {
     font-family: @sans;
     time, a[rel=author] {
@@ -96,13 +96,24 @@ main {
 
 
   blockquote {
+    font-style: normal;
+
     p {
-      font-family: @serif;
     }
 
     &:before, &:after {
       font-size: 2rem;
     }
+  }
+
+  a.readmore {
+    font-family: @serif;
+    font-size: .8rem;
+  }
+
+  kbd {
+    font-size: .7rem;
+    font-family: Helvetia, Arial, sans-serif;
   }
 }
 

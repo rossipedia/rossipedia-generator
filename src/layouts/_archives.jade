@@ -2,13 +2,13 @@ extends _main
 
 
 block content
-	h1 Blog Archives
+	h1: a(href=archivesRoot) Blog Archives
 
 	section.archives
 		each byYear in posts
-			h2.year: a(href='javascript:alert("fix me");')= byYear.year
+			h2.year: a(href=archivesRoot + byYear.path)= byYear.key
 			each byMonth in byYear.posts
-				h3.month: a(href='javascript:alert("fix me");')= byMonth.month
+				h3.month: a(href=archivesRoot + byYear.path + byMonth.path)= byMonth.key
 				ul.posts
 					each post in byMonth.posts
 						li.post

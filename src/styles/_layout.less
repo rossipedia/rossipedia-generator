@@ -24,9 +24,10 @@ html, body {
   margin-right: auto;
 }
 
-main {
+section.main {
   > article > header {
     h1 {
+      margin-top: 1.5rem;
       margin-bottom: 0;
       line-height: 1.4;
     }
@@ -84,12 +85,20 @@ main {
   }
 
   blockquote {
-    padding: .25rem 1rem;
+    padding: .25rem 1.5rem;
+    position: relative;
 
     &:before {
-      left: 0;
+      left: .4rem;
       top: 0;
+      position: absolute;
     }
+  }
+
+  kbd {
+    padding: .1rem .6rem 0;
+    margin: 0 .3rem;
+    display: inline-block;
   }
 }
 

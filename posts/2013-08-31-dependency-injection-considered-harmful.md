@@ -18,6 +18,8 @@ Twitter, as it was made by [Eric Lippert][4], who was on the C# team at
 Microsoft for quite some time. Normally I agree with pretty much
 everything he writes. But not this time.
 
+[1]: http://stackoverflow.com/questions/18547909/what-would-be-the-most-powerful-argument-for-writing-solid-applications
+
 <!-- more -->
 
 His comment states:
@@ -77,7 +79,6 @@ architecture. These principles work together to form a single
 methodology that has been proven many times over. If you pick just
 one, or leave one out, then all bets are off.
 
-[1]: http://stackoverflow.com/questions/18547909/what-would-be-the-most-powerful-argument-for-writing-solid-applications
 [2]: http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)#cite_note-ub-old-web-solid-1
 [3]: http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod
 [4]: http://ericlippert.com/

@@ -1,0 +1,4 @@
+header
+	h1: a(href=post.meta.urlpath)= post.meta.title
+	time(datetime=post.meta.date.toISOString())= post.meta.date.format('ll')
+	a(rel="author")= post.meta.author

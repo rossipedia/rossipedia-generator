@@ -8,9 +8,9 @@ html, body {
     h1 a {
       color: @header-link-color;
 
-      -webkit-transition: all @transition-time @transition-ease;
-         -moz-transition: all @transition-time @transition-ease;
-              transition: all @transition-time @transition-ease;
+      -webkit-transition: color @transition-time @transition-ease;
+         -moz-transition: color @transition-time @transition-ease;
+              transition: color @transition-time @transition-ease;
 
       &:hover {
         color: @header-link-active;
@@ -21,11 +21,22 @@ html, body {
 }
 
 
-main {
+section.main {
 
   > article > header {
     border-bottom: @header-border-bottom;
-    h1 { border-bottom: none; }
+    h1 {
+      border-bottom: none;
+      a {
+        color: @header-link-color;
+        -webkit-transition: color @transition-time @transition-ease;
+           -moz-transition: color @transition-time @transition-ease;
+                transition: color @transition-time @transition-ease;
+        &:hover {
+          color: @link-color;
+        }
+      }
+    }
 
     time {
       color: #ccc;
@@ -52,6 +63,13 @@ main {
     text-decoration: none;
     color: @link-color;
     border-radius: .3rem;
+
+    &[target=_blank] {
+      background-repeat: no-repeat;
+      background-image: url(data:image/gif;base64,R0lGODlhCgAKAIABAGNjY////yH5BAEAAAEALAAAAAAKAAoAAAIUjA8Jx+rmFkqBQltnY7BzKW1VZBUAOw==);
+      background-position: right center;
+      padding-right: 14px;
+    }
 
     &:hover {
       text-decoration: underline;
@@ -100,15 +118,25 @@ main {
     border-left: 3px solid @pre-border-color;
     background-color: @pre-back-color;
     color: lighten(@text-color, 10%);
-    font-style: italic;
     text-shadow: 0 1px white;
-    position: relative;
+
 
     &:before {
       content: '“';
       display: inline;
-      position: absolute;
+
     }
+  }
+
+  kbd {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    color: #333;
+
+    box-shadow: 0 .1rem 0 0 rgba(0, 0, 0, 0.2),
+                0 0 0 .2rem #ffffff inset;
+    text-shadow: 0 1px 0 #fff;
   }
 }
 

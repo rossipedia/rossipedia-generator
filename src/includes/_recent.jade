@@ -2,8 +2,8 @@ h2 Recent Posts
 
 nav.recent
 	ul
-		each item in blog.getLatest(5)
-			li: a(href=item.urlpath)= item.title
+		each post in blog.getLatest(5)
+			li: a(href=post.meta.urlpath)= post.meta.title
 
 		li: a(href=blog.options.archivesUrl) More...
 

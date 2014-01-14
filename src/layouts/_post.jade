@@ -5,10 +5,7 @@ block head
 
 block content
 	article
-		header
-			h1= post.meta.title
-			time(datetime=post.meta.date.toISOString())= post.meta.date.format('ll')
-			a(rel="author")= post.meta.author
+		include ../includes/_postheader
 
 		section.content
 			!= post.getContent()
