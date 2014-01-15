@@ -3,8 +3,6 @@ var github = (function(){
     return $('<div/>').text(str).html();
   }
   function render(target, repos){
-    console.log(repos);
-
     var i = 0, fragment = '', t = $(target)[0];
 		var desc;
 

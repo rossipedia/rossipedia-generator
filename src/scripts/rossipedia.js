@@ -1,6 +1,15 @@
 // Load github repos
 $.domReady(function() {
 
+	$('label.sidebar-toggle').mousedown(function() {
+		var ck = $('#sidebar-checkbox');
+		if(ck.attr('checked')) {
+			ck.removeAttr('checked');
+		} else {
+			ck.attr('checked', 'checked');
+		}
+	});
+
 	var contentLinks = document.querySelectorAll('body a');
 
 	// Externalize links
