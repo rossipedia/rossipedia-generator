@@ -1,15 +1,17 @@
-section.sidebar
+section.sidebar-wrap
 	label(for="sidebar-checkbox",class="sidebar-toggle")
+	section.sidebar
 
-	aside
-		p Code MacGuyver @ <a href="http://stackexchange.com" target="_blank">StackExchange</a>
-		p I've been known to play and record music.
+		aside
+			p Code MacGuyver @ <a href="http://stackexchange.com" target="_blank">StackExchange</a>
+			p I've been known to play and record music.
 
-	section
-		nav
-			ul
-				li: a(href="/") Home
-				li: a(href="/" + blog.options.postsDir) Archives
+		include _search
 
-	section
 		include _recent
+
+		include _stackoverflow
+
+		include _github
+
+		include _twitter

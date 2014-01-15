@@ -13,6 +13,8 @@ tags:
 Wanted to get an IR_Black color scheme for .mintty to match vim, so I
 whipped up the following:
 
+<!-- more -->
+
 ```bash
 Black             = 78,78,78
 Blue              = 150,203,254

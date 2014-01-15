@@ -1,14 +1,27 @@
-var contentLinks = document.querySelectorAll('.content a');
+// Load github repos
+$.domReady(function() {
 
-var host = location.host;
+	var contentLinks = document.querySelectorAll('body a');
 
-for(var i=0, l=contentLinks.length;i < l;++i) {
-	var a = contentLinks[i];
-	if (a.host != location.host) {
-		a.setAttribute('target', '_blank');
+	// Externalize links
+	var host = location.host;
+	for(var i=0, l=contentLinks.length;i < l;++i) {
+		var a = contentLinks[i];
+		if (a.host && a.host != location.host) {
+			a.setAttribute('target', '_blank');
+		}
 	}
-}
 
-if(hljs && hljs.initHighlightingOnLoad) {
-	hljs.initHighlightingOnLoad();
-}
+	// Initialize highlight js
+	if(hljs && hljs.initHighlightingOnLoad) {
+		hljs.initHighlightingOnLoad();
+	}
+
+	// Load github repos
+	github.showRepos({
+			user: 'rossipedia',
+			count: 5,
+			skip_forks: true,
+			target: '#gh_repos'
+	});
+});

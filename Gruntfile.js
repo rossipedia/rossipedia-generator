@@ -17,11 +17,17 @@ module.exports = function(grunt) {
         data: {}
       }
     },
+    ender: {
+      options: {
+        output: 'build/scripts/ender',
+        dependencies: ['jeesh', 'reqwest', 'jar', 'underscore']
+      }
+    },
     copy: {
       dev: {
         expand: true,
         cwd: 'src/',
-        src: [ '**/*.css', '**/*.js' ],
+        src: [ 'scripts/**/*.js', 'styles/**/*.css', '*.ico' ],
         dest: 'build/'
       }
     },
@@ -110,7 +116,7 @@ module.exports = function(grunt) {
     return blog.build(options);
   });
 
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'less', 'blog']);
+  grunt.registerTask('build', ['clean', 'copy', 'ender', 'jade', 'less', 'blog']);
   grunt.registerTask('serve', ['build', 'express', 'watch']);
 
 };

@@ -1,9 +1,11 @@
-h2 Recent Posts
+section
+	h2 Recent Posts
+		a(href='/' + blog.options.postsDir) &nbsp;- more
 
-nav.recent
-	ul
-		each post in blog.getLatest(5)
-			li: a(href=post.meta.urlpath)= post.meta.title
+	nav.recent
+		ul
+			each post in blog.getLatest(5)
+				li: a(href=post.meta.urlpath)= post.meta.title
 
-		li: a(href=blog.options.archivesUrl) More...
+			li: a(href=blog.options.archivesUrl) More...
 

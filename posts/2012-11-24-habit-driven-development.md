@@ -12,6 +12,8 @@ I am constantly amazed at the difficulties that we have to deal with
 day in and day out as a software developer due to somebody failing to
 just stop and _think_ about what it is they're developing.
 
+<!-- more -->
+
 I'm working on a project right now where the models (if you can call
 them that) are field-for-field equivalent to the database tables.
 

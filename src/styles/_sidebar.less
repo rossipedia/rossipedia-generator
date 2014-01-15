@@ -1,18 +1,24 @@
+@import "_rssicon.less";
+
 // -------------------------------------------------
 // - Layout
 .sidebar-checkbox {
   display: none;
 }
 
-.sidebar {
+.sidebar-wrap {
   position: fixed;
-  overflow: visible auto;
-
+  overflow-x: visible;
   top: 0;
   bottom: 0;
-  left: -20rem;
+  left: -@sidebar-width;
 
-  width: 20rem;
+  width: @sidebar-width;
+}
+
+.sidebar {
+  height: 100%;
+  overflow-y: auto;
 
   aside {
     padding: @sidebar-padding-left;
@@ -31,13 +37,36 @@
 
     li a {
       display: block;
-      padding: .5rem @sidebar-padding-left .3rem;
+      padding: .5rem @sidebar-padding-left;
 
+      span.desc {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
-  .recent li a {
-      padding: .4rem @sidebar-padding-left .1rem;
+  nav.recent li a {
+    padding: .4rem @sidebar-padding-left .1rem;
+  }
+
+  section.stackoverflow {
+    text-align: center;
+  }
+
+  section.search {
+    padding: 0 @sidebar-padding-left;
+    margin-bottom: 1rem;
+
+    input.search {
+      display: inline-block;
+      width: @sidebar-width - (@sidebar-padding-left * 5) - 1rem;
+      margin: 0;
+      padding: .2rem .5rem;
+    }
   }
 }
 
@@ -65,7 +94,7 @@
   box-sizing: border-box;
 }
 
-#sidebar-checkbox:checked ~ .wrap .sidebar {
+#sidebar-checkbox:checked ~ .wrap .sidebar-wrap {
   left: 0;
 }
 // -------------------------------------------------
@@ -74,10 +103,10 @@
 // - Typography
 .sidebar {
   font-family: @sans;
-  font-size: 0.75rem;
+  font-size: .9rem;
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
+    /* font-weight: normal; */
     font-family: inherit;
   }
 
@@ -93,6 +122,10 @@
   .recent {
     font-size: .8em;
   }
+
+  span.desc {
+    font-size: .75em;
+  }
 }
 
 .sidebar-toggle:before {
@@ -104,16 +137,21 @@
 
 // -------------------------------------------------
 // - Theme
+.sidebar-wrap {
+  -webkit-transition: left .3s ease-in-out;
+     -moz-transition: left .3s ease-in-out;
+          transition: left .3s ease-in-out;
+}
+
 .sidebar {
-  background-color: #fff;
+  background-color: rgba(32,32,32,.95);
   color: rgba(255,255,255,.6);
 
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
 
   ul {
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    border-top: 1px solid rgba(0,0,0,.2);
+
 
     li a {
       color: inherit;
@@ -123,12 +161,21 @@
       -moz-transition: all .1s ease-in-out;
       transition: all .1s ease-in-out;
 
-      border: 1px solid transparent;
+      border-bottom: 1px solid rgba(0,0,0,.2);
+      border-top: 1px solid rgba(255,255,255,.1);
 
       &:hover {
         background-color: rgba(255,255,255,0.2);
       }
     }
+  }
+
+  input.search {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0px .1rem .7rem rgba(0,0,0,.3) inset;
+    border-radius: .2rem;
+    color: #ccc;
   }
 }
 
@@ -141,24 +188,15 @@
 .sidebar-toggle:active,
 #sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
   color: #fff;
-  background-color: #505050;http://t.co/dKP3o1e
+  background-color: #505050;
 }
 
-#sidebar-checkbox:checked ~ .wrap .sidebar {
+/* #sidebar-checkbox:checked ~ .wrap .sidebar {
   box-shadow: -1rem 0 8rem 0rem #000 inset,
               0 0 5rem #888;
   border-right: .1rem solid #888;
-  background-color: rgba(32,32,32,.95);
 
-  ul {
-    border-bottom: 1px solid rgba(255,255,255,.1);
-    border-top: 1px solid rgba(0,0,0,.2);
 
-    li a {
-      border-bottom: 1px solid rgba(0,0,0,.2);
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-  }
-}
+} */
 // -------------------------------------------------
 

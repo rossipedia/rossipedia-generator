@@ -12,6 +12,8 @@ tags:
 I've found that one of the most useful skills I have is knowing what
 to forget. Let me ask a question to demonstrate my point.
 
+<!-- more -->
+
 Which of the following pieces of data is more useful?
 
 1. Knowing the entire API of `System.Collections.Generic.List<>'

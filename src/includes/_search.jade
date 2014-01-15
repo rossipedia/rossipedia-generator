@@ -1,0 +1,5 @@
+section.search
+	form.search(action="http://google.com/search" method="get")
+		input(type="hidden", name="q", value="site:rossipedia.com")
+		input.search(type="text", name="q", placeholder="Search...")
+		span.rss: a(href=blog.options.feedUrl, title="Subscribe to the RSS feed") RSS
