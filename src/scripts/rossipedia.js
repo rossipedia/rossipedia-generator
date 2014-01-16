@@ -10,12 +10,9 @@ $.domReady(function() {
 		}
 	});
 
-	var contentLinks = document.querySelectorAll('body a');
-
 	// Externalize links
 	var host = location.host;
-	for(var i=0, l=contentLinks.length;i < l;++i) {
-		var a = contentLinks[i];
+	$('body a').each(function(a) {
 		if (a.host && a.host != location.host) {
 			a.setAttribute('target', '_blank');
 		}
