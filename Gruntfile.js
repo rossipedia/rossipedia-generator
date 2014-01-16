@@ -79,7 +79,7 @@ module.exports = function(grunt) {
     },
     watch: {
       less: {
-        files:['src/styles/**/*.less'],
+        files:['src/styles/*.less'],
         tasks:['less:dev'],
         options: {
           spawn: false,
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
         }
       },
       jade: {
-        files:['posts/**/*.md', 'src/**/*.jade'],
+        files:['posts/*.md', 'src/**/*.jade'],
         tasks:['blog:dev', 'jade:dev'],
         options: {
           spawn: false,
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
         }
       },
       static: {
-        files:['src/styles/**/*.css','src/scripts/**/*.js'],
+        files:['src/styles/*.css','src/scripts/*.js'],
         tasks:['copy:dev'],
         options: {
           spawn: false,
