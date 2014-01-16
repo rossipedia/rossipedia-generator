@@ -26,10 +26,47 @@
 @table-border-color: #ddd;
 
 @sidebar-width: 20rem;
-@sidebar-padding-left: 1rem;
 
-
+@sidebar-padding: 1rem;
 @disabled-color: #eee;
 
 
 @header-border-bottom: 1px solid rgba(0,0,0,.1);
+
+.sb-padded() {
+  .sb-padded(@sidebar-padding);
+}
+
+.sb-padded(@top, @bottom) {
+  padding-left: @sidebar-padding;
+  padding-right: @sidebar-padding;
+  padding-top: @top;
+  padding-bottom: @bottom;
+}
+
+.sb-padded(@vert) {
+  .sb-padded(@vert, @vert);
+}
+
+
+.transition(@property; @duration; @ease; @delay) {
+  -webkit-transition-property: @property;
+     -moz-transition-property: @property;
+          transition-property: @property;
+
+  -webkit-transition-duration: @duration;
+     -moz-transition-duration: @duration;
+          transition-duration: @duration;
+
+  -webkit-transition-timing-function: @ease;
+     -moz-transition-timing-function: @ease;
+          transition-timing-function: @ease;
+
+  -webkit-transition-delay: @delay;
+     -moz-transition-delay: @delay;
+          transition-delay: @delay;
+}
+
+.transition(@property; @duration; @ease) {
+  .transition(@property; @duration; @ease; 0s);
+}

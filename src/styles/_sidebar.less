@@ -20,11 +20,11 @@
   overflow-y: auto;
 
   aside {
-    padding: @sidebar-padding-left;
+    .sb-padded();
   }
 
   h1, h2, h3, h4, h5, h6 {
-    padding: 0.3em @sidebar-padding-left;
+    .sb-padded(.3rem);
   }
 
   section {
@@ -36,7 +36,7 @@
 
     li a {
       display: block;
-      padding: .5rem @sidebar-padding-left;
+      padding: .5rem @sidebar-padding;
 
       span.desc {
         display: block;
@@ -49,7 +49,7 @@
   }
 
   nav.recent li a {
-    padding: .4rem @sidebar-padding-left .1rem;
+    padding: .4rem @sidebar-padding .1rem;
   }
 
   section.stackoverflow {
@@ -57,15 +57,19 @@
   }
 
   section.search {
-    padding: 0 @sidebar-padding-left;
+    padding: 0 @sidebar-padding;
     margin-bottom: 1rem;
 
     input.search {
       display: inline-block;
-      width: @sidebar-width - (@sidebar-padding-left * 5) - 1rem;
+      width: @sidebar-width - (@sidebar-padding * 5) - 1rem;
       margin: 0;
       padding: .2rem .5rem;
     }
+  }
+
+  section.twitter {
+    padding: 0 @sidebar-padding;
   }
 }
 
@@ -79,10 +83,6 @@
 
   padding: .5rem .65rem;
   cursor: pointer;
-
-  -webkit-transition: all @transition-time @transition-ease;
-     -moz-transition: all @transition-time @transition-ease;
-          transition: all @transition-time @transition-ease;
 
 }
 
@@ -141,13 +141,9 @@
 
 // -------------------------------------------------
 // - Theme
-.sidebar-wrap {
-  -webkit-transition: left @transition-time @transition-ease;
-     -moz-transition: left @transition-time @transition-ease;
-          transition: left @transition-time @transition-ease;
-}
 
 .sidebar {
+  box-shadow: -2rem 0 7rem rgba(0,0,0,.9) inset;
   background-color: rgba(32,32,32,.95);
   color: rgba(255,255,255,.6);
 
@@ -187,19 +183,26 @@
   color: rgba(0,0,0,.3);
   background-color: #fff;
   border-radius: 4px;
+
 }
 
-/* .sidebar-toggle:active, */
+// Transitions
+#sidebar-checkbox ~ .wrap .sidebar-wrap {
+  .transition(left;@transition-time;@transition-ease);
+}
+
+#sidebar-checkbox:checked ~ .wrap .sidebar-wrap {
+  .transition(left;@transition-time;@transition-ease;@transition-time);
+}
+
+#sidebar-checkbox ~ .wrap .sidebar-toggle {
+  .transition(right,color,background-color;@transition-time,0s,0s;@transition-ease;@transition-time,@transition-time,@transition-time);
+}
+
 #sidebar-checkbox:checked ~ .wrap .sidebar-toggle {
-  color: #fff;
-  background-color: #505050;
+  .transition(right,color,background-color;@transition-time,0s,0s;@transition-ease;0s,@transition-time,@transition-time);
   right: .5rem;
+  color: #fff;
+  background-color: rgba(80, 80, 80, .8);
 }
 
-// -------------------------------------------------
-
-/* @media only screen and (max-width: 480px) { */
-  /* left: -@sidebar-width - 3rem; */
-
-  /* width: @sidebar-width; */
-/* } */
