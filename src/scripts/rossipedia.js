@@ -16,7 +16,7 @@ $.domReady(function() {
 		if (a.host && a.host != location.host) {
 			a.setAttribute('target', '_blank');
 		}
-	}
+	});
 
 	// Initialize highlight js
 	if(hljs && hljs.initHighlightingOnLoad) {
