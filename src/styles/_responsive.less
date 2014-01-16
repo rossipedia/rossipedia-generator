@@ -1,6 +1,7 @@
 @media only screen and (max-width : 570px) {
   html, body {
     font-size: @base-font-size * .9;
+    -webkit-text-size-adjust: none;
   }
 
   .masthead {
@@ -14,20 +15,28 @@
   }
 
   section.main {
-    > article > header {
-      font-family: @sans;
-      time, a[rel=author] {
-        font-size: .75rem;
-      }
-    }
+    > article {
+      > header {
+        font-family: @sans;
 
-    .content {
-      h1 {
-        font-size: 1rem;
+        h1 {
+          font-size: 1rem;
+        }
+
+        time, a[rel=author] {
+          font-size: .75rem;
+        }
       }
-      p {
-        font-size: .9rem;
+
+      .content {
+        p {
+          font-size: .9rem;
+        }
       }
     }
+  }
+
+  .sideba {
+    font-size: 16px;
   }
 }

@@ -7,10 +7,11 @@ block content
 	each post in posts
 		article
 			include ../includes/_postheader
-		section.content
-			!= post.getTeaser()
 
-			p: a.readmore(href=post.meta.urlpath) Read more...
+			section.content
+				!= post.getTeaser()
+
+				p: a.readmore(href=post.meta.urlpath) Read more...
 
 block footer
 	ul.nav
