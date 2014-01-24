@@ -1,5 +1,6 @@
 ---
 title: "Dependency Injection considered harmful? Not so fast."
+slug: dependency-injection-considered-harmful
 date: 2013-08-31 10:29
 comments: true
 categories:
