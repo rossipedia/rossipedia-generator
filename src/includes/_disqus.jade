@@ -1,7 +1,7 @@
 div#disqus_thread
-- if (target === 'prod')
-	script(type="text/javascript").
-		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+script(type="text/javascript").
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	if (/rossipedia\.com/.test(location.host)) {
 		var disqus_shortname = 'rossipedia'; // required: replace example with your forum shortname
 		//- var disqus_url = '#{ post.meta.href }';
 
@@ -11,8 +11,9 @@ div#disqus_thread
 				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 		})();
-	noscript Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	a.dsq-brlink(href="http://disqus.com")
-		| comments powered by
-		span.logo-disqus Disqus
+	}
+noscript Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+a.dsq-brlink(href="http://disqus.com")
+	| comments powered by
+	span.logo-disqus Disqus
 

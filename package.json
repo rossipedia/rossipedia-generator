@@ -26,6 +26,6 @@
     "moment": "~2.5.0",
     "sitemap": "~0.7.1",
     "underscore": "~1.5.2",
-    "yaml-front-matter": "~2.1.11"
+    "js-yaml": "~3.0.1"
   }
 }

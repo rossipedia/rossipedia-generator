@@ -110,10 +110,15 @@ module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.registerMultiTask('blog', 'Process posts into html files', function() {
-    var options = _.extend(this.data, { target: this.target }),
-        blog = new lib.Blog();
+    try {
+      var options = _.extend(this.data, { target: this.target }),
+          blog = new lib.Blog();
 
-    return blog.build(options);
+      blog.build(options);
+    } catch(e) {
+      grunt.log.writeln(e);
+      return false;
+    }
   });
 
   grunt.registerTask('build', ['clean', 'copy', 'ender', 'jade', 'less', 'blog']);
