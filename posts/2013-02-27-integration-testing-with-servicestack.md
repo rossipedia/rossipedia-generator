@@ -66,12 +66,12 @@ public class WebAppHost : AppHostBase
 // The Self-Host AppHost
 public class SelfAppHost : AppHostHttpListenerBase
 {
-  public WebAppHost()
+  public SelfAppHost()
     : this(AppSettings.ConnectionString)
   {
   }
 
-  public WebAppHost(string connString)
+  public SelfAppHost(string connString)
     : base("My Service", typeof(WebAppHost).Assembly)
   {
     this.connString = connString;
