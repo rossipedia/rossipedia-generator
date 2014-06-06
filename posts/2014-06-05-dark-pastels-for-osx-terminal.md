@@ -12,10 +12,12 @@ I've been working a lot in Ubuntu lately, and my terminal of choice over there
 is the [xfce4-terminal](http://docs.xfce.org/apps/terminal/start), specifically
 for it's "Dark Pastels" theme.
 
+<!-- more -->
+
 I wanted to have this same color scheme in my OSX Terminal.app. So I copied the
 colors over, and here it is!
 
-[Dark Pastels for OSX Terminal.app](/assets/dark-pastels-terminal.theme)
+[Dark Pastels for OSX Terminal.app](/assets/dark-pastels-terminal-theme.zip)
 
 Just unzip and double click the `Dark Pastels.terminal` file and it should load
 right up.
