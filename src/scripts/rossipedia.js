@@ -18,11 +18,6 @@ $.domReady(function() {
 		}
 	});
 
-	// Initialize highlight js
-	if(hljs && hljs.initHighlightingOnLoad) {
-		hljs.initHighlightingOnLoad();
-	}
-
 	// Load github repos
 	github.showRepos({
 			user: 'rossipedia',
