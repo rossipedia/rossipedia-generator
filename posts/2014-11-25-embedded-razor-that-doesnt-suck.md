@@ -13,37 +13,16 @@ Recently I had need to integrate a templating system into the project I'm
 working on, because [designers like that kind of thing][1]. Being a primarily
 .NET shop, our defacto HTML generation language here at Stack Exchange is Razor.
 
-What's the big deal? Well, these templates needed to live in a library that
-doesn't depend on `System.Web`, not an ASP.net project. And that, my friends,
-is the point at which I should've purchased a strong bottle of scotch.
+What's the big deal? Well, these templates need to live in a library that
+doesn't depend on `System.Web` (that is: _not_ an ASP.net project). 
 
 <!-- more -->
-
-"What's the problem?" you say. "Hasn't that been done before?"
-
-"Well, yeah... I guess... _technically_. But not _well_" I respond a touch too
-defensively.
-
-If you've tried this, you know the experience to be less than ideal. You have a
-couple of options:
-
-* Try to use Razor directly (System.Web.Razor? System.Web.WebPages.Razor?)
-* Use a third party solution that has attempted to make this process slightly
-less..._uncomfortable_.
-
-The idea of getting all low level and digging into the raw Razor assembly
-sounded slightly less appealing than sitting through a three hour Justin Bieber
-concert, so I went with the third party option. Specifically,
-[RazorGenerator][2].
-
-All was not rainbows and unicorn farts, however. There are a few gotchas.
-Hopefully this post will help you avoid some of them.
-
 
 RazorGenerator
 --------------
 
-There are a couple options when using RazorGenerator. Searching for
+There are a couple options when it comes to embedding Razor templates into your library.
+For this example, I'm going to use [RazorGenerator][1]. Searching for
 RazorGenerator in the Nuget Package manager yields about a handful of results:
 
 ![RazorGenerator search results](/assets/razorgenerator-results.png)
@@ -90,26 +69,31 @@ And `MyTemplate.cs` looks like this:
 ```csharp
 using System.IO;
 
-namespace RazorLibrary
+public abstract class MyTemplate
 {
-  public abstract class MyTemplate
+  private readonly StringWriter _writer = new StringWriter();
+
+  public abstract void Execute();
+
+  protected void WriteLiteral(string text)
   {
-    private readonly StringWriter _writer = new StringWriter();
+    if (string.IsNullOrEmpty(text))
+      return;
 
-    public abstract void Execute();
+    _writer.Write(text);
+  }
 
-    protected void WriteLiteral(string text)
-    {
-      if (string.IsNullOrEmpty(text))
-        return;
+  protected void Write(object value)
+  {
+    if (value == null)
+      return;
 
-      _writer.Write(text);
-    }
+    _writer.Write(value);
+  }
 
-    public override string ToString()
-    {
-      return _writer.ToString();
-    }
+  public override string ToString()
+  {
+    return _writer.ToString();
   }
 }
 ```
@@ -127,7 +111,10 @@ A couple of things to note:
    Write(string)` method. Our implementation simply writes the text to a
    `System.IO.StringWriter` instance.
 
-3. We override `ToString` to get at the rendered output.
+3. All values (eg: @somevar) get written using a `void Write(object)` method.
+   Implementation is the same as above.
+
+4. We override `ToString` to get at the rendered output.
 
 As it stands, right now we have a functional template. We can create an
 instance of it, execute it, and get the output:
@@ -142,12 +129,100 @@ Console.WriteLine(template.ToString());
 
 Neat!
 
-However, this is a pretty useless template. There's no way to pass any data to
-the template. This is where things get a little bit tricky (not too bad though),
-so let's roll up our sleeves.
+However, this is a pretty useless template. There's no way to pass in data for
+the template to render! Let's make some changes to allow that.
 
 
+Generalizin'
+------------
 
+First things first, let's make our base template class a bit more flexible. I'll
+rename it from the illustriously named `MyTemplate`, to `Template`, and we'll
+make it generic. The type passed in will represent the type of the data that is
+used to render the template. We'll supply this data via a `Model` property.
 
-[1]: http://i.imgur.com/HUMSPMP.jpg
-[2]: https://razorgenerator.codeplex.com/
+_**Note**: While generally I prefer passing this kind of data in via the
+constructor, doing things that way using RazorGenerator is, well, less than
+comfortable._
+
+Our base template class now looks like this:
+
+```csharp
+public abstract class Template<TData>
+{
+  private readonly StringWriter _writer = new StringWriter();
+  private readonly TData _data;
+
+  public TData Model { get; set; }
+
+  public abstract void Execute();
+
+  protected void WriteLiteral(string text)
+  {
+    if (string.IsNullOrEmpty(text))
+      return;
+
+    _writer.Write(text);
+  }
+
+  protected void Write(object value)
+  {
+    if (value == null)
+      return;
+
+    _writer.Write(value);
+  }
+
+  public override string ToString()
+  {
+    return _writer.ToString();
+  }
+}
+```
+
+Then, let's define the data we want to render:
+
+```csharp
+public class Person
+{
+  public string Name { get; set; }
+  public int Age { get; set; }
+}
+```
+
+Finally, let's rename `Test.cshtml` to `PersonTemplate.cshtml`, and update
+it:
+
+```html
+@* Generator: Template *@
+@inherits RazorLibrary.Template<RazorLibrary.Person>
+
+<p>Hi!</p>
+
+<p>The person named @Model.Name is @Model.Age years old.</p>
+```
+
+And that's about it! You now have a library project that exposes templates,
+without any dependency on `System.Web`.
+
+For example:
+
+```csharp
+using RazorLibrary;
+
+var person = new Person { 
+	Name = "John Doe",
+	Age = 34
+};
+
+var template = new PersonTemplate {
+  Model = person
+};
+template.Execute();
+Console.WriteLine(template.ToString());
+```
+
+Hope you find this useful. Happy coding!
+
+[1]: https://razorgenerator.codeplex.com/
+
